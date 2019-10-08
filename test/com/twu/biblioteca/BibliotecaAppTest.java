@@ -11,6 +11,6 @@ public class BibliotecaAppTest {
     @Test
     public void testGreet () {
         BibliotecaApp app = new BibliotecaApp();
-        assertThat(app.greet(), is("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n\n\n"));
+        assertThat(app.greet(), is("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n\n"));
     }
 }
