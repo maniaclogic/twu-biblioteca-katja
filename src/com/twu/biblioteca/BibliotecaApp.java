@@ -16,7 +16,17 @@ public class BibliotecaApp {
 
         while (!exit) {
             System.out.println(menu.display());
-            menu.navigate(menu.userSelection());
+            Menu.navigate(Helper.userSelection("Input the number or name of what you want to do.   (Type x or exit to quit)"));
         }
     }
+
+    public static ArrayList<String> checkout(String name, ArrayList<String> books) throws Exception {
+
+        books.remove(name);
+        return books;
+
+    }
+    // string at position = contains(inputString) - find index in array
+    // ask whether it is correct
+    // delete string - pop index from list
 }

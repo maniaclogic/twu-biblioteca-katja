@@ -14,21 +14,21 @@ public class TestBibFileReader {
 
     @Test
     public void TestReaderResultNotNull() throws Exception {
-        BibFileReader reader = new BibFileReader();
+        Helper reader = new Helper();
 
         assertNotNull(reader.read());
     }
 
     @Test
     public void TestReaderReturnsList() throws Exception {
-        BibFileReader reader = new BibFileReader();
+        Helper reader = new Helper();
 
         assertThat(reader.read(), instanceOf(ArrayList.class));
     }
 
     @Test
     public void TestYearIncluded() throws Exception {
-        BibFileReader reader = new BibFileReader();
+        Helper reader = new Helper();
         ArrayList books = reader.read();
         String bookExample = books.get(1).toString();
 

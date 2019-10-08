@@ -13,26 +13,14 @@ public class Menu {
 
 
     public String display() {
-        return "\n\nOptions:\n 1) List of Books";
+        return "\n\nOptions:\n 1) List of Books \n 2) Check-out Book";
 
-    }
-
-    public String userSelection() {
-        String prompt = "Input the number or name of what you want to do.   (Type x or exit to quit)";
-        String inputLine = null;
-        System.out.println(prompt + "   ");
-        try {
-            BufferedReader sysReader = new BufferedReader(
-                    new InputStreamReader(System.in));
-            inputLine = sysReader.readLine();
-            if (inputLine.length() == 0) return null;
-        } catch (IOException e) {
-            System.out.println("IOException: " + e);
-        }
-        return inputLine.toLowerCase();
     }
 
     public static void navigate(String choice) throws Exception {
+
+        Helper reader = new Helper();
+        ArrayList listBooks = reader.read();
 
         if (choice.equals("exit") || choice.equals("x")) {
 
@@ -40,9 +28,13 @@ public class Menu {
 
         } else if (choice.equals("1") || choice.equals("list of books")) {
 
-            BibFileReader reader = new BibFileReader();
-            ArrayList listBooks = reader.read();
             for (Object book : listBooks) System.out.println(book);
+        }
+        else if (choice.equals("2") || choice.equals("check-out book")){
+
+            String bookName = Helper.userSelection("Enter the name of the book you want to check-out. Please be aware of spelling.");
+            final ArrayList checkout = BibliotecaApp.checkout(bookName, listBooks);
+
         }
         else System.out.println("Not a valid input.");
 }}
