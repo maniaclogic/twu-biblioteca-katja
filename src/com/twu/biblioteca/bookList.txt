@@ -1,55 +1,44 @@
-Don Quixote; Miguel De Cervantes
-Pilgrim's Progress; John Bunyan
-Robinson Crusoe; Daniel Defoe
-Gulliver's Travels; Jonathan Swift
-Tom Jones; Henry Fielding
-Clarissa; Samuel Richardson
-Tristram Shandy; Laurence Sterne
-Dangerous Liaisons; Pierre Choderlos De Laclos
-Emma; Jane Austen
-Frankenstein; Mary Shelley
-Nightmare Abbey; Thomas Love Peacock
-The Black Sheep; Honoré De Balzac
-The Charterhouse of Parma; Stendhal
-he Count of Monte Cristo; Alexandre Dumas
-ybil; Benjamin Disraeli
-David Copperfield; Charles Dickens
-Wuthering Heights; Emily Brontë
-Jane Eyre; Charlotte Brontë
-Vanity Fair; William Makepeace Thackeray
-The Scarlet Letter; Nathaniel Hawthorne
-Moby-Dick; Herman Melville
-A Passage to India; EM Forster
-The Great Gatsby; F. Scott Fitzgerald
-The Trial; Franz Kafka
-Men Without Women; Ernest Hemingway
-Journey to the End of the Night; Louis-Ferdinand Celine
-As I Lay Dying; William Faulkner
-Brave New World; Aldous Huxley
-Scoop; Evelyn Waugh
-USA; John Dos Passos
-The Big Sleep; Raymond Chandler
-The Pursuit Of Love; Nancy Mitford
-The Plague; Albert Camus
-Nineteen Eighty-Four; George Orwell
-Malone Dies; Samuel Beckett
-Catcher in the Rye; J.D. Salinger
-Wise Blood; Flannery O'Connor
-Charlotte's Web; EB White
-The Lord Of The Rings; J. R. R. Tolkien
-Lucky Jim; Kingsley Amis
-Lord of the Flies; William Golding
-The Quiet American; Graham Greene
-On the Road; Jack Kerouac
-Lolita; Vladimir Nabokov
-The Tin Drum; Günter Grass
-Things Fall Apart; Chinua Achebe
-The Prime of Miss Jean; Brodie Muriel Spark
-To Kill A Mockingbird; Harper Lee
-Catch-22; Joseph Heller
-Herzog; Saul Bellow
-One Hundred Years of Solitude; Gabriel García Márquez
-Mrs Palfrey at the Claremont; Elizabeth Taylor
-Tinker Tailor Soldier Spy; John Le Carré
-Song of Solomon; Toni Morrison
-The Bottle Factory Outing; Beryl Bainbridge
+Don Quixote; Miguel De Cervantes (1605)
+Pilgrim's Progress; John Bunyan (1678)
+Robinson Crusoe; Daniel Defoe (1719)
+Gulliver's Travels; Jonathan Swift (1726)
+Tom Jones; Henry Fielding (1749)
+Clarissa; Samuel Richardson (1748)
+Tristram Shandy; Laurence Sterne (1759)
+Dangerous Liaisons; Pierre Choderlos De Laclos (1782)
+Emma; Jane Austen (1815)
+Frankenstein; Mary Shelley (1818)
+Nightmare Abbey; Thomas Love Peacock (1818)
+The Black Sheep; Honoré De Balzac (1840)
+The Charterhouse of Parma; Stendhal (1839)
+The Count of Monte Cristo; Alexandre Dumas (1844)
+Sybil; Benjamin Disraeli (1845)
+David Copperfield; Charles Dickens (1850)
+Wuthering Heights; Emily Brontë (1847)
+Jane Eyre; Charlotte Brontë (1847)
+Vanity Fair; William Makepeace Thackeray (1847)
+The Scarlet Letter; Nathaniel Hawthorne (1850)
+Moby-Dick; Herman Melville (1851)
+A Passage to India; EM Forster (1924)
+The Great Gatsby; F. Scott Fitzgerald (1925)
+The Trial; Franz Kafka (1925)
+Men Without Women; Ernest Hemingway (1927)
+Journey to the End of the Night; Louis-Ferdinand Celine (1932)
+As I Lay Dying; William Faulkner (1930)
+Brave New World; Aldous Huxley (1932)
+Scoop; Evelyn Waugh (1938)
+USA; John Dos Passos (1938)
+The Big Sleep; Raymond Chandler (1939)
+The Pursuit Of Love; Nancy Mitford (1945)
+The Plague; Albert Camus (1947)
+The Lord Of The Rings; J. R. R. Tolkien (1954)
+Lord of the Flies; William Golding (1954)
+The Quiet American; Graham Greene (1955)
+To Kill A Mockingbird; Harper Lee (1960)
+Catch-22; Joseph Heller (1961)
+Herzog; Saul Bellow (1964)
+One Hundred Years of Solitude; Gabriel García Márquez (1967)
+Mrs Palfrey at the Claremont; Elizabeth Taylor (1971)
+Tinker Tailor Soldier Spy; John Le Carré (1974)
+Song of Solomon; Toni Morrison (1977)
+The Bottle Factory Outing; Beryl Bainbridge (1974)

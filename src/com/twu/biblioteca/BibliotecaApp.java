@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
 
+import java.util.ArrayList;
+
 public class BibliotecaApp {
 
     public String greet() {
@@ -13,6 +15,7 @@ public class BibliotecaApp {
         BibFileReader reader = new BibFileReader();
 
         System.out.println(app.greet());
-        System.out.println(reader.read());
+        ArrayList listBooks = reader.read();
+        for (Object book : listBooks) System.out.println(book);
     }
 }
