@@ -1,11 +1,10 @@
 import com.twu.biblioteca.BibliotecaApp;
+
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-
 public class BibliotecaAppTest {
-
     @Test
     public void testGreet () {
         BibliotecaApp app = new BibliotecaApp();
