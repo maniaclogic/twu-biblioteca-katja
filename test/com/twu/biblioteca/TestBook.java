@@ -39,4 +39,11 @@ public class TestBook {
         assertThat(book1.checkoutStatus(), is(true));
         assertThat(book2.checkoutStatus(), is(false));
     }
+
+    @Test
+    public void testReturn() {
+        book1.return();
+
+        assertThat(book1.checkoutStatus(), is(true));
+    }
 }
