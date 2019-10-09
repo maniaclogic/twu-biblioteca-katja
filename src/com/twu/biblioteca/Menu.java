@@ -51,10 +51,9 @@ public class Menu {
             if (checkedBook != null) {
                 Book.instances.remove(checkedBook);
                 checkedBook.checkOut();
-                System.out.println(checkedBook.getName());
-                System.out.println("-- Has successfully been checked out.");
+                System.out.println("Thank you! Enjoy the book");
                 Book.instances.add(checkedBook);
-            }
+            } else { System.out.println("Sorry, that book is not available.");}
         }
         else System.out.println("Not a valid input.");
 }}
