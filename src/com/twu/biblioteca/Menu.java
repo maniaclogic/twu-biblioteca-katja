@@ -40,19 +40,21 @@ public class Menu {
 
             String desiredBook = Helper.userSelection("Enter the name of the book you want to check-out. Please be aware of spelling.");
             ArrayList<Book> listBook = Book.getInstances();
+            Book checkedBook = null;
             for (Book book : listBook) {
                 if (book.getName().equals(desiredBook)) {
 
-                    Book.instances.remove(book);
-                    System.out.println(book.getName());
-                    System.out.println(book.checkoutStatus());
-                    book.checkOut();
-                    System.out.println(book.checkoutStatus());
-                    Book.instances.add(book);
+                    checkedBook = book;
 
                 }
             }
-
+            if (checkedBook != null) {
+                Book.instances.remove(checkedBook);
+                checkedBook.checkOut();
+                System.out.println(checkedBook.getName());
+                System.out.println("-- Has successfully been checked out.");
+                Book.instances.add(checkedBook);
+            }
         }
         else System.out.println("Not a valid input.");
 }}
