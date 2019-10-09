@@ -5,7 +5,7 @@ import java.util.List;
 
 class Helper {
 
-    ArrayList read() throws Exception {
+    static void readFile() throws Exception {
 
         File file = new File("/Users/katben/Documents/TWU_Biblioteca-master/src/com/twu/biblioteca/bookList.txt");
 
@@ -14,9 +14,7 @@ class Helper {
         String st;
         List<String> books = new ArrayList<String>();
         while ((st = br.readLine()) != null)
-            books.add(st);
-
-        return (ArrayList) books;
+            Book.createBook(st);
     }
 
     static String userSelection(String prompt) {
@@ -30,6 +28,6 @@ class Helper {
         } catch (IOException e) {
             System.out.println("IOException: " + e);
         }
-        return inputLine.toLowerCase();
+        return inputLine;
     }
 }

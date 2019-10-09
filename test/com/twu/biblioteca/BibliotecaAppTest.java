@@ -14,21 +14,4 @@ import static org.junit.Assert.assertThat;
 
 public class BibliotecaAppTest {
 
-    @Test
-    public void testCheckout() throws Exception {
-
-        BibliotecaApp app = new BibliotecaApp();
-        ArrayList<String> books = new ArrayList<String>() {{
-            add("File");
-            add("Edit");
-            add("VieW");
-            add("C8de");
-            add("Analyze");
-        }};
-
-        assertThat(books.size(), is(not(app.checkout("Analyze", books).size())));
-        assertThat(books.size(), is(app.checkout("Refactor", books).size()));
-
-
-    }
 }

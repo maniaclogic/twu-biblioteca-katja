@@ -11,6 +11,7 @@ public class BibliotecaApp {
     public static void main(String[] args) throws Exception {
 
         Menu menu = new Menu();
+        Helper.readFile();
 
         System.out.println(menu.greet());
 
@@ -20,12 +21,12 @@ public class BibliotecaApp {
         }
     }
 
-    public static ArrayList<String> checkout(String name, ArrayList<String> books) throws Exception {
+//    public static ArrayList<String> checkout(String name, ArrayList<String> books) throws Exception {
+//
+//        books.remove(name);
+//        return books;
 
-        books.remove(name);
-        return books;
-
-    }
+    //}
     // string at position = contains(inputString) - find index in array
     // ask whether it is correct
     // delete string - pop index from list

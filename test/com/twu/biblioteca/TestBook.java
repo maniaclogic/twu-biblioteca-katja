@@ -13,7 +13,7 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 public class TestBook {
 
     Book book1 = Book.createBook("Hallo", "World", 1432);
-    Book book2 = Book.createBook("Bookidi", "Bookinsen", 4327);
+    Book book2 = Book.createBook("Bookidi; McBookinsen of Bookholm (1826)");
 
     @Test
     public void testCreateBook() {
@@ -21,14 +21,15 @@ public class TestBook {
 
         assertThat(book1.getName(), is("Hallo"));
         assertThat(book1.getYear(), is(1432));
-        assertThat(book2.getAuthor(), is("Bookinsen"));
+        assertThat(book2.getAuthor(), is("McBookinsen of Bookholm"));
         assertThat(book2.checkoutStatus(), is(false));
+        assertThat(book2.getYear(), is(1826));
     }
 
     @Test
     public void testGetInstances() {
         assertThat(Book.getInstances(), instanceOf(ArrayList.class));
-        assertThat(Book.getInstances().get(0), Is.<Object>is(book1.toString()));
+        assertThat(Book.getInstances().get(0).toString(), is(book1.toString()));
     }
 
     @Test

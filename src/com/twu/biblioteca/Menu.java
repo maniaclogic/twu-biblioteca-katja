@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
+import static com.twu.biblioteca.Book.instances;
 
 public class Menu {
 
@@ -19,21 +23,35 @@ public class Menu {
 
     public static void navigate(String choice) throws Exception {
 
-        Helper reader = new Helper();
-        ArrayList listBooks = reader.read();
-
         if (choice.equals("exit") || choice.equals("x")) {
 
-             BibliotecaApp.exit = true;
+            BibliotecaApp.exit = true;
 
         } else if (choice.equals("1") || choice.equals("list of books")) {
 
-            for (Object book : listBooks) System.out.println(book);
+            ArrayList<Book> listBook = Book.getInstances();
+            for (Book book : listBook) {
+                if (!book.checkoutStatus()) {
+                    System.out.println(book.toString());
+                }
+        }
         }
         else if (choice.equals("2") || choice.equals("check-out book")){
 
-            String bookName = Helper.userSelection("Enter the name of the book you want to check-out. Please be aware of spelling.");
-            final ArrayList checkout = BibliotecaApp.checkout(bookName, listBooks);
+            String desiredBook = Helper.userSelection("Enter the name of the book you want to check-out. Please be aware of spelling.");
+            ArrayList<Book> listBook = Book.getInstances();
+            for (Book book : listBook) {
+                if (book.getName().equals(desiredBook)) {
+
+                    Book.instances.remove(book);
+                    System.out.println(book.getName());
+                    System.out.println(book.checkoutStatus());
+                    book.checkOut();
+                    System.out.println(book.checkoutStatus());
+                    Book.instances.add(book);
+
+                }
+            }
 
         }
         else System.out.println("Not a valid input.");
