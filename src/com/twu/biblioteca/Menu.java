@@ -17,7 +17,7 @@ public class Menu {
 
 
     public String display() {
-        return "\n\nOptions:\n 1) List of Books \n 2) Check-out Book";
+        return "\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n 3) Return a Book";
 
     }
 
@@ -54,6 +54,24 @@ public class Menu {
                 System.out.println("Thank you! Enjoy the book");
                 Book.instances.add(checkedBook);
             } else { System.out.println("Sorry, that book is not available.");}
+        }
+        else if (choice.equals("3") || (choice.equals("return a book"))){
+            String toBeReturned = Helper.userSelection("Which book would you like to return?");
+            ArrayList<Book> listBook = Book.getInstances();
+            Book returningBook = null;
+            for (Book book : listBook) {
+                if (book.getName().equals(toBeReturned)) {
+
+                    returningBook = book;
+
+                }
+            }
+            if (returningBook != null) {
+                Book.instances.remove(returningBook);
+                returningBook.returnBook();
+                //System.out.println("Thank you! Enjoy the book");
+                Book.instances.add(returningBook);
+            } //else { System.out.println("Sorry, that book is not available.");}
         }
         else System.out.println("Not a valid input.");
 }}

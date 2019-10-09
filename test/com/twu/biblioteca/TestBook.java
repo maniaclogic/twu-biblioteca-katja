@@ -41,8 +41,8 @@ public class TestBook {
     }
 
     @Test
-    public void testReturn() {
-        book1.return();
+    public void testReturnBook() {
+        book1.returnBook();
 
         assertThat(book1.checkoutStatus(), is(true));
     }
