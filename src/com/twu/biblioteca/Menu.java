@@ -69,9 +69,9 @@ public class Menu {
             if (returningBook != null) {
                 Book.instances.remove(returningBook);
                 returningBook.returnBook();
-                //System.out.println("Thank you! Enjoy the book");
+                System.out.println("Thank you for returning the book");
                 Book.instances.add(returningBook);
-            } //else { System.out.println("Sorry, that book is not available.");}
+            } else { System.out.println("That is not a valid book to return.");}
         }
         else System.out.println("Not a valid input.");
 }}
