@@ -37,6 +37,16 @@ public class TestMockMenu {
         assertThat(app.exit, is(true));
     }
 
+    @Test
+    public String testOption6() {
+        User user1 = User.createUser("123-1234", "hsf3", "Tom", "0123-5225252", "abc@email.com");
+
+        Menu mockMenu = mock(Menu.class);
+        when(mockMenu.option6().thenReturn(user1.getUserContacts()));
+        
+        assertThat(Menu.option6())
+    }
+
 //    @Test
 //    public void testOption2() {
 //        Helper mockHelper = mock(Helper.class);

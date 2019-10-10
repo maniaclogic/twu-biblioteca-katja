@@ -49,5 +49,5 @@ public class User {
     String getUserContacts() {
         return "ID: "+this.getIdNum()+ ", Name: "+this.getName()+", Tel: "+this.getNumber()+", Email: "+this.getEmail();
     }
-    
+
 }
