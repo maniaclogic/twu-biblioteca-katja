@@ -38,7 +38,7 @@ public class Menu {
         }
         else if (choice.equals("2") || choice.equals("checkout book") || choice.equals("Check-out Book")){
 
-            String desiredBook = Helper.userSelection("Enter the name of the book you want to check-out. Please be aware of spelling.");
+            String desiredBook = Helper.userSelection("Enter the title of the book you want to check-out. Please be aware of spelling.");
             ArrayList<Book> listBook = Book.getInstances();
             Book checkedBook = null;
             for (Book book : listBook) {
@@ -60,11 +60,7 @@ public class Menu {
             ArrayList<Book> listBook = Book.getInstances();
             Book returningBook = null;
             for (Book book : listBook) {
-                if (book.getName().equals(toBeReturned)) {
-
-                    returningBook = book;
-
-                }
+                if (book.getName().equals(toBeReturned)) { returningBook = book;}
             }
             if (returningBook != null) {
                 Book.instances.remove(returningBook);
@@ -80,6 +76,20 @@ public class Menu {
                     System.out.println(movie.toString());
                 }
             }
+        }else if (choice.equals("5") || choice.equals("checkout movie") || choice.equals("Check-out Movie")){
+
+            String desiredMovie = Helper.userSelection("Enter the title of the movie you want to check-out. Please be aware of spelling.");
+            ArrayList<Movie> listMovie = Movie.getInstances();
+            Movie checkedMovie = null;
+            for (Movie movie : listMovie) {
+                if (movie.getName().equals(desiredMovie)) { checkedMovie = movie; }
+            }
+            if (checkedMovie != null) {
+                Movie.instances.remove(checkedMovie);
+                checkedMovie.checkOut();
+                System.out.println("Thank you! Enjoy the movie");
+                Movie.instances.add(checkedMovie);
+            } else { System.out.println("Sorry, that movie is not available.");}
         }
         else System.out.println("Not a valid input.");
 }

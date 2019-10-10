@@ -30,13 +30,13 @@ public class TestMovie {
             assertThat(Movie.getInstances().get(0).toString(), is(movie1.toString()));
         }
 
-//        @Test
-//        public void testCheckOut() {
-//            movie1.checkOut();
-//
-//            assertThat(movie1.checkoutStatus(), is(true));
-//            assertThat(movie2.checkoutStatus(), is(false));
-//        }
+        @Test
+        public void testCheckOut() {
+        movie1.checkOut();
+
+        assertThat(movie1.checkoutStatus(), is(true));
+        assertThat(movie2.checkoutStatus(), is(false));
+    }
 
     }
 

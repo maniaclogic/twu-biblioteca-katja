@@ -71,6 +71,6 @@ public class Movie implements Media {
 
     @Override
     public void checkOut() {
-
+        this.checkedOut = true;
     }
 }
