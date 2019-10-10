@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 
 public class TestUser {
@@ -18,6 +19,9 @@ public class TestUser {
     public void testGetters() {
         assertThat(user1.getIdNum(), is("123-1234"));
         assertThat(user1.getPsswd(), is("hsf3"));
+        assertThat(user1.getName(), is("Tom"));
+        assertThat(user1.getNumber(), is("0123-5225252"));
+        assertThat(user1.getEmail(), is("abc@email.com"));
     }
 
     @Test
