@@ -35,21 +35,15 @@ public class Book implements Media {
         return book;
     }
 
-    public String getName() {
-        return this.name;
-    }
+    public String getName() { return this.name; }
 
-    public String getAuthor() {
-        return this.author;
-    }
+    public String getAuthor() { return this.author; }
 
-    public int getYear() {
-        return this.year;
-    }
+    public int getYear() { return this.year; }
 
-    public boolean checkoutStatus() {
-        return this.checkedOut;
-    }
+    public boolean checkoutStatus() { return this.checkedOut; }
+
+    public static ArrayList<Book> getInstances() { return instances; }
 
     @Override
     public void checkOut() {
@@ -59,11 +53,6 @@ public class Book implements Media {
     public void returnBook() {
 
         this.checkedOut = false;
-    }
-
-    public static ArrayList<Book> getInstances() {
-
-        return instances;
     }
 
     public String toString() {

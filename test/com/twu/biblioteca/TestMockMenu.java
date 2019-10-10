@@ -18,7 +18,7 @@ public class TestMockMenu {
     @Test
     public void testDisplay() {
         Menu menu = new Menu();
-        assertThat(menu.display().toString(), is("\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n 3) Return a Book \n 4) List of Movies"));
+        assertThat(menu.display().toString(), is("\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n 3) Return a Book \n 4) List of Movies \n 5) Check-out Movie \n\n a) admin"));
     }
 
     @Test
@@ -30,12 +30,4 @@ public class TestMockMenu {
         Menu.navigate("x");
         assertThat(app.exit, is(true));
     }
-    /*@Test
-    public void testUserSelection() throws IOException {
-
-        when(readerMock.readLine()).thenReturn("1").thenReturn("LIST of BOOks");
-
-        assertThat(readerMock.selection(), is("1"));
-        assertThat(readerMock.selection(), is("list of books"));
-    }*/
 }
