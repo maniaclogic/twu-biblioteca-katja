@@ -56,16 +56,18 @@ public class Book implements Media {
         this.checkedOut = true;
     }
 
-    @Override
     public void returnBook() {
+
         this.checkedOut = false;
     }
 
     public static ArrayList<Book> getInstances() {
+
         return instances;
     }
 
     public String toString() {
+
         return this.getName() +"; "+ this.getAuthor() +" "+ this.getYear();
     }
 

@@ -17,7 +17,7 @@ public class Menu {
 
 
     public String display() {
-        return "\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n 3) Return a Book";
+        return "\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n 3) Return a Book \n 4) List of Movies";
 
     }
 
@@ -27,7 +27,7 @@ public class Menu {
 
             BibliotecaApp.exit = true;
 
-        } else if (choice.equals("1") || choice.equals("list of books")) {
+        } else if (choice.equals("1") || choice.equals("list of books") || choice.equals("List of Books")) {
 
             ArrayList<Book> listBook = Book.getInstances();
             for (Book book : listBook) {
@@ -36,7 +36,7 @@ public class Menu {
                 }
         }
         }
-        else if (choice.equals("2") || choice.equals("check-out book")){
+        else if (choice.equals("2") || choice.equals("checkout book") || choice.equals("Check-out Book")){
 
             String desiredBook = Helper.userSelection("Enter the name of the book you want to check-out. Please be aware of spelling.");
             ArrayList<Book> listBook = Book.getInstances();
@@ -72,6 +72,15 @@ public class Menu {
                 System.out.println("Thank you for returning the book");
                 Book.instances.add(returningBook);
             } else { System.out.println("That is not a valid book to return.");}
+        } else if (choice.equals("4") || choice.equals("list of movies") || choice.equals("List of Movies")) {
+
+            ArrayList<Movie> listMovies = Movie.getInstances();
+            for (Movie movie : listMovies) {
+                if (!movie.checkoutStatus()) {
+                    System.out.println(movie.toString());
+                }
+            }
         }
         else System.out.println("Not a valid input.");
-}}
+}
+}

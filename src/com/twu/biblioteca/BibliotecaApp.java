@@ -11,7 +11,8 @@ public class BibliotecaApp {
     public static void main(String[] args) throws Exception {
 
         Menu menu = new Menu();
-        Helper.readFile();
+        Helper.readBooks("/Users/katben/Documents/TWU_Biblioteca-master/src/com/twu/biblioteca/bookList.txt");
+        Helper.readMovies("/Users/katben/Documents/TWU_Biblioteca-master/src/com/twu/biblioteca/movielist.txt");
 
         System.out.println(menu.greet());
 

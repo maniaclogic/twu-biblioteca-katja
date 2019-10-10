@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import java.util.ArrayList;

@@ -5,16 +5,26 @@ import java.util.List;
 
 class Helper {
 
-    static void readFile() throws Exception {
+    static void readBooks(String path) throws Exception {
 
-        File file = new File("/Users/katben/Documents/TWU_Biblioteca-master/src/com/twu/biblioteca/bookList.txt");
+        File file = new File(path);
 
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         String st;
-        List<String> books = new ArrayList<String>();
         while ((st = br.readLine()) != null)
             Book.createBook(st);
+    }
+
+    static void readMovies(String path) throws Exception {
+
+        File file = new File(path);
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+
+        String st;
+        while ((st = br.readLine()) != null)
+            Movie.createMovie(st);
     }
 
     static String userSelection(String prompt) {
