@@ -11,8 +11,8 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 public class TestMovie {
 
-        Movie movie1 = Movie.createMovie("Hallo", 1432, 7.0, "Igur");
-        Movie movie2 = Movie.createMovie("Movieidi McMovinsen of Movieken (1826) 4.3; Theodora");
+        private Movie movie1 = Movie.createMovie("Hallo", 1432, 7.0, "Igur");
+        private Movie movie2 = Movie.createMovie("Movieidi McMovinsen of Movieken (1826) 4.3; Theodora");
 
         @Test
         public void testCreateMovie() {

@@ -3,17 +3,17 @@ package com.twu.biblioteca;
 import java.io.Console;
 import java.util.ArrayList;
 
-public class Menu {
+class Menu {
 
-    public String greet() {
+    String greet() {
         return "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
     }
 
-    public String display() {
-        return "\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n 3) Return a Book \n 4) List of Movies \n 5) Check-out Movie \n\n a) admin";
+    String display() {
+        return "\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n 3) Return a Book \n 4) List of Movies \n 5) Check-out Movie \n 6) See my contact details \n\n a) admin";
     }
 
-    public static void navigate(String choice) throws Exception {
+    static void navigate(String choice) throws Exception {
         char choi = choice.charAt(0);
 
         switch (choi) {

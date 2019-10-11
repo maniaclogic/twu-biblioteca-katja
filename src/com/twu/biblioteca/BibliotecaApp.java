@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 
 public class BibliotecaApp {
 
-    public static boolean exit = false;
+    static boolean exit = false;
 
     public static void main(String[] args) throws Exception {
 

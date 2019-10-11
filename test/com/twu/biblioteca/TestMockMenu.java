@@ -22,9 +22,8 @@ public class TestMockMenu {
     @Test
     public void testDisplay() {
         Menu menu = new Menu();
-        assertThat(menu.display().toString(), is("\n\nOptions:\n 1) List of Books " +
-                "\n 2) Check-out Book \n 3) Return a Book \n 4) List of Movies " +
-                "\n 5) Check-out Movie \n\n a) admin"));
+        assertThat(menu.display().toString(), is("\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n " +
+                "3) Return a Book \n 4) List of Movies \n 5) Check-out Movie \n 6) See my contact details \n\n a) admin"));
     }
 
     @Test

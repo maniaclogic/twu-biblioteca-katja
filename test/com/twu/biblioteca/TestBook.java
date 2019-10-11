@@ -11,8 +11,8 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 public class TestBook {
 
-    Book book1 = Book.createBook("Hallo", "World", 1432);
-    Book book2 = Book.createBook("Bookidi; McBookinsen of Bookholm (1826)");
+    private Book book1 = Book.createBook("Hallo", "World", 1432);
+    private Book book2 = Book.createBook("Bookidi; McBookinsen of Bookholm (1826)");
 
     @Test
     public void testCreateBook() {

@@ -9,7 +9,7 @@ public class Movie implements Media {
     private boolean checkedOut = false;
     private double rating;
     private String director;
-    public static ArrayList<Movie> instances = new ArrayList<Movie>();
+    static ArrayList<Movie> instances = new ArrayList<Movie>();
 
     private Movie(String name, int year, double rating, String director) {
         this.name = name;
@@ -29,39 +29,39 @@ public class Movie implements Media {
         this.director = piece[1];
     }
 
-    public static Movie createMovie(String name, int year, double rating, String director) {
+    static Movie createMovie(String name, int year, double rating, String director) {
         Movie movie = new Movie(name, year, rating, director);
         instances.add(movie);
         return movie;
     }
 
-    public static Movie createMovie(String movieInfo) {
+    static Movie createMovie(String movieInfo) {
         Movie movie = new Movie(movieInfo);
         instances.add(movie);
         return movie;
     }
 
-    public String getName() {
+    String getName() {
         return this.name;
     }
 
-    public int getYear() {
+    int getYear() {
         return this.year;
     }
 
-    public boolean checkoutStatus() {
+    boolean checkoutStatus() {
         return this.checkedOut;
     }
 
-    public double getRating() {
+    private double getRating() {
         return this.rating;
     }
 
-    public String getDirector() {
+    private String getDirector() {
         return this.director;
     }
 
-    public static ArrayList<Movie> getInstances() {
+    static ArrayList<Movie> getInstances() {
         return instances;
     }
 

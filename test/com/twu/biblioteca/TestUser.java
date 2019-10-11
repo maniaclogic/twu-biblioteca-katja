@@ -11,8 +11,8 @@ import static org.junit.Assert.assertTrue;
 
 public class TestUser {
 
-    User user1 = User.createUser("123-1234", "hsf3", "Tom", "0123-5225252", "abc@email.com");
-    Book book3 = Book.createBook("Super", "Cool", 100);
+    private User user1 = User.createUser("123-1234", "hsf3", "Tom", "0123-5225252", "abc@email.com");
+    private Book book3 = Book.createBook("Super", "Cool", 100);
 
 
     @Test
