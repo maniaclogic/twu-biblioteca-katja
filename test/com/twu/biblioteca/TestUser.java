@@ -34,6 +34,13 @@ public class TestUser {
     }
 
     @Test
+    public void testReturned() {
+        user1.returned(book3);
+
+        assertTrue(user1.getCheckedOutMedia().isEmpty());
+    }
+
+    @Test
     public void testGetUserContacts() {
         assertThat(user1.getUserContacts(), is("ID: 123-1234, Name: Tom, Tel: 0123-5225252, Email: abc@email.com"));
     }

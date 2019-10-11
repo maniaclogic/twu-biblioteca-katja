@@ -46,6 +46,10 @@ public class User {
         checkedOutMedia.add(media.toString());
     }
 
+    public void returned(Media media) {
+        checkedOutMedia.remove(media.toString());
+    }
+
     String getUserContacts() {
         return "ID: "+this.getIdNum()+ ", Name: "+this.getName()+", Tel: "+this.getNumber()+", Email: "+this.getEmail();
     }

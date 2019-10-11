@@ -35,6 +35,9 @@ public class Menu {
             case '5':
                 Menu.option5();
                 break;
+            case '6':
+                Menu.option6();
+                break;
             case 'a':
                 Menu.adminOption();
                 break;
@@ -111,10 +114,25 @@ public class Menu {
             }
         }
         if (returningBook != null) {
-            Book.instances.remove(returningBook);
-            returningBook.returnBook();
-            System.out.println("Thank you for returning the book");
-            Book.instances.add(returningBook);
+            String userId = Helper.userSelection("Id Number:   ");
+            assert userId != null;
+            User userFound = null;
+
+            for (User user : User.getUserList()) {
+                if (user.toString().contains(userId)) {
+                    userFound = user;
+                }
+            }
+
+            if (userFound != null) {
+
+                userFound.returned(returningBook);
+
+                Book.instances.remove(returningBook);
+                returningBook.returnBook();
+                System.out.println("Thank you for returning the book");
+                Book.instances.add(returningBook);
+            }
         } else {
             System.out.println("That is not a valid book to return.");
         }
@@ -178,19 +196,32 @@ public class Menu {
         }
     }
 
-//    String option6() {
-//
-//    }
+    private static void option6() {
+
+        String userId = Helper.userSelection("Id Number:   ");
+        String password = Helper.userSelection("password:   ");
+
+        for (User user : User.getUserList()) {
+            String dbuser = user.toString();
+            String dbId = dbuser.split(";")[0];
+            String dbpsswd = dbuser.split(";")[1];
+
+            if (dbId.equals(userId) && dbpsswd.equals(password)) { user.getUserContacts(); }
+        }
+    }
 
     private static void adminOption() {
 
         String adminID = Helper.userSelection("ID: ");
         String adminPsswd = Helper.userSelection("Password: ");
 
+        assert adminPsswd != null;
+        assert adminID != null;
         if (adminID.equals("Admin") && adminPsswd.equals("Secure")) {
             System.out.println("Options:\n 1) Search for User \n 2) Search for Media");
             String adminChoice = Helper.userSelection(" ");
 
+            assert adminChoice != null;
             if (adminChoice.equals("1") || adminChoice.equals("search for user") || adminChoice.equals("user")) {
                 String userSearch = Helper.userSelection("UserId:");
                 boolean userFound = false;
@@ -207,6 +238,7 @@ public class Menu {
                 for (User user : User.getUserList()) {
                     ArrayList<String> usersMedia = user.getCheckedOutMedia();
                     for (String media : usersMedia){
+                        assert mediaSearch != null;
                         if (media.contains(mediaSearch)) {
                             System.out.println(user.getUserContacts() + "\nCurrent Media: " + user.getCheckedOutMedia());
                             mediaFound = true;
