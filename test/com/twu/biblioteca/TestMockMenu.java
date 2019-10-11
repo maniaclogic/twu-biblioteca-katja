@@ -37,15 +37,15 @@ public class TestMockMenu {
         assertThat(app.exit, is(true));
     }
 
-    @Test
-    public String testOption6() {
-        User user1 = User.createUser("123-1234", "hsf3", "Tom", "0123-5225252", "abc@email.com");
-
-        Menu mockMenu = mock(Menu.class);
-        when(mockMenu.option6().thenReturn(user1.getUserContacts()));
-        
-        assertThat(Menu.option6())
-    }
+//    @Test
+//    public String testOption6() {
+//        User user1 = User.createUser("123-1234", "hsf3", "Tom", "0123-5225252", "abc@email.com");
+//
+//        Menu mockMenu = mock(Menu.class);
+//        when(mockMenu.option6().thenReturn(user1.getUserContacts()));
+//
+//        assertThat(Menu.option6(), is("ID: 123-1234, Name: Tom, Tel: 0123-5225252, Email: abc@email.com"));
+//    }
 
 //    @Test
 //    public void testOption2() {

@@ -178,6 +178,10 @@ public class Menu {
         }
     }
 
+//    String option6() {
+//
+//    }
+
     private static void adminOption() {
 
         String adminID = Helper.userSelection("ID: ");
@@ -189,19 +193,27 @@ public class Menu {
 
             if (adminChoice.equals("1") || adminChoice.equals("search for user") || adminChoice.equals("user")) {
                 String userSearch = Helper.userSelection("UserId:");
+                boolean userFound = false;
                 for (User user : User.getUserList()) {
                     if (user.getIdNum().equals(userSearch)) {
                         System.out.println(user.getCheckedOutMedia());
+                        userFound = true;
                     }
-                }
+                } if (!userFound) { System.out.println("User couldn't be found."); }
 
-            } else if (adminChoice.equals("2") || adminChoice.equals("search for media") || adminChoice.equals("media")) {
+                } else if (adminChoice.equals("2") || adminChoice.equals("search for media") || adminChoice.equals("media")) {
                 String mediaSearch = Helper.userSelection("Media title:");
+                boolean mediaFound = false;
                 for (User user : User.getUserList()) {
-                    if (user.getCheckedOutMedia().contains(mediaSearch)) {
-                        System.out.println(user.toString() + user.getCheckedOutMedia());
+                    ArrayList<String> usersMedia = user.getCheckedOutMedia();
+                    for (String media : usersMedia){
+                        if (media.contains(mediaSearch)) {
+                            System.out.println(user.getUserContacts() + "\nCurrent Media: " + user.getCheckedOutMedia());
+                            mediaFound = true;
+                        }
                     }
-                }
+                } if (!mediaFound) { System.out.println("Media couldn't be found"); }
+
             } else { System.out.println("Not a valid input."); }
 
         } else { System.out.println("Invalid credentials"); }
