@@ -14,6 +14,7 @@ class Menu {
     }
 
     static void navigate(String choice) throws Exception {
+
         char choi = choice.charAt(0);
 
         switch (choi) {
@@ -62,6 +63,7 @@ class Menu {
         String desiredBook = Helper.userSelection("Enter the title of the book you want to check-out. Please be aware of spelling.");
         String userID = Helper.userSelection("ID: ");
         String userPsswd = Helper.userSelection("Password: ");
+
         ArrayList<Book> listBook = Book.getInstances();
         Book checkedBook = null;
 
@@ -73,7 +75,7 @@ class Menu {
         if (checkedBook != null) {
 
             User user = User.authenticate(userID, userPsswd);
-            if (user != null){
+            if (user != null) {
 
                 user.checkedOut(checkedBook);
                 Book.instances.remove(checkedBook);
@@ -101,28 +103,19 @@ class Menu {
             }
         }
         if (returningBook != null) {
-            String userId = Helper.userSelection("Id Number:   ");
-            assert userId != null;
-            User userFound = null;
-
-            for (User user : User.getUserList()) {
-                if (user.toString().contains(userId)) {
-                    userFound = user;
-                }
-            }
+            String userId = Helper.userSelection("ID:   ");
+            String userPassword = Helper.userSelection("Password:   ");
+            User userFound = User.authenticate(userId, userPassword);
 
             if (userFound != null) {
 
                 userFound.returned(returningBook);
-
                 Book.instances.remove(returningBook);
                 returningBook.returnBook();
                 System.out.println("Thank you for returning the book");
                 Book.instances.add(returningBook);
             }
-        } else {
-            System.out.println("That is not a valid book to return.");
-        }
+        } else { System.out.println("That is not a valid book to return."); }
     }
 
     private static void displayMovies() {
@@ -152,23 +145,12 @@ class Menu {
 
             String userId = Helper.userSelection("Id Number:   ");
             String password = Helper.userSelection("password:   ");
-            boolean userFound = false;
 
-            for (User user : User.getUserList()) {
-                String dbuser = user.toString();
-                String dbId = dbuser.split(";")[0];
-                String dbpsswd = dbuser.split(";")[1];
+            User user = User.authenticate(userId, password);
 
-                if (dbId.equals(userId) && dbpsswd.equals(password)) {
+            if (user != null) {
 
-                    user.checkedOut(checkedMovie);
-                    userFound = true;
-
-                }
-            }
-
-            if (userFound) {
-
+                user.checkedOut(checkedMovie);
                 Movie.instances.remove(checkedMovie);
                 checkedMovie.checkOut();
                 System.out.println("Thank you! Enjoy the movie");
@@ -185,16 +167,11 @@ class Menu {
 
     private static void contactDetails() {
 
-        String userId = Helper.userSelection("Id Number:   ");
-        String password = Helper.userSelection("password:   ");
+        String userId = Helper.userSelection("ID:   ");
+        String password = Helper.userSelection("Password:   ");
+        User user = User.authenticate(userId, password);
 
-        for (User user : User.getUserList()) {
-            String dbuser = user.toString();
-            String dbId = dbuser.split(";")[0];
-            String dbpsswd = dbuser.split(";")[1];
-
-            if (dbId.equals(userId) && dbpsswd.equals(password)) { user.getUserContacts(); }
-        }
+        if (user != null) { System.out.println(user.getUserContacts()); }
     }
 
     private static void adminOption() {
@@ -204,38 +181,58 @@ class Menu {
 
         assert adminPsswd != null;
         assert adminID != null;
+
         if (adminID.equals("Admin") && adminPsswd.equals("Secure")) {
+
             System.out.println("Options:\n 1) Search for User \n 2) Search for Media");
             String adminChoice = Helper.userSelection(" ");
-
             assert adminChoice != null;
+
             if (adminChoice.equals("1") || adminChoice.equals("search for user") || adminChoice.equals("user")) {
-                String userSearch = Helper.userSelection("UserId:");
-                boolean userFound = false;
-                for (User user : User.getUserList()) {
-                    if (user.getIdNum().equals(userSearch)) {
-                        System.out.println(user.getCheckedOutMedia());
-                        userFound = true;
-                    }
-                } if (!userFound) { System.out.println("User couldn't be found."); }
 
-                } else if (adminChoice.equals("2") || adminChoice.equals("search for media") || adminChoice.equals("media")) {
-                String mediaSearch = Helper.userSelection("Media title:");
-                boolean mediaFound = false;
-                for (User user : User.getUserList()) {
-                    ArrayList<String> usersMedia = user.getCheckedOutMedia();
-                    for (String media : usersMedia){
-                        assert mediaSearch != null;
-                        if (media.contains(mediaSearch)) {
-                            System.out.println(user.getUserContacts() + "\nCurrent Media: " + user.getCheckedOutMedia());
-                            mediaFound = true;
-                        }
-                    }
-                } if (!mediaFound) { System.out.println("Media couldn't be found"); }
+                Menu.adminUserSearch(Helper.userSelection("UserID: "));
 
-            } else { System.out.println("Not a valid input."); }
+            } else if (adminChoice.equals("2") || adminChoice.equals("search for media") || adminChoice.equals("media")) {
 
-        } else { System.out.println("Invalid credentials"); }
+                Menu.adminMediaSearch(Helper.userSelection("Media title:"));
+
+            } else {
+                System.out.println("Not a valid input.");
+            }
+
+        } else {
+            System.out.println("Invalid credentials");
+        }
     }
 
+
+    private static void adminUserSearch(String userToSearch) {
+        boolean userFound = false;
+        for (User user : User.getUserList()) {
+            if (user.getIdNum().equals(userToSearch)) {
+                System.out.println(user.getCheckedOutMedia());
+                userFound = true;
+            }
+        }
+        if (!userFound) {
+            System.out.println("User couldn't be found.");
+        }
+    }
+
+    private static void adminMediaSearch(String mediaToSearch) {
+        boolean mediaFound = false;
+        for (User user : User.getUserList()) {
+            ArrayList<String> usersMedia = user.getCheckedOutMedia();
+            for (String media : usersMedia) {
+                assert mediaToSearch != null;
+                if (media.contains(mediaToSearch)) {
+                    System.out.println(user.getUserContacts() + "\nCurrent Media: " + user.getCheckedOutMedia());
+                    mediaFound = true;
+                }
+            }
+        }
+        if (!mediaFound) {
+            System.out.println("Media couldn't be found");
+        }
+    }
 }
