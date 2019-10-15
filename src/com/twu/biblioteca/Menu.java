@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import java.io.Console;
 import java.util.ArrayList;
 
 class Menu {
@@ -10,7 +9,8 @@ class Menu {
     }
 
     String display() {
-        return "\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n 3) Return a Book \n 4) List of Movies \n 5) Check-out Movie \n 6) See my contact details \n\n a) admin";
+        return "\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n 3) Return a Book \n 4) List of Movies \n " +
+                "5) Check-out Movie \n 6) See my contact details \n\n a) admin";
     }
 
     static void navigate(String choice) throws Exception {
@@ -21,22 +21,22 @@ class Menu {
                 BibliotecaApp.exit = true;
                 break;
             case '1':
-                Menu.option1();
+                Menu.displayBooks();
                 break;
             case '2':
-                Menu.option2();
+                Menu.checkBookOut();
                 break;
             case '3':
-                Menu.option3();
+                Menu.returnBook();
                 break;
             case '4':
-                Menu.option4();
+                Menu.displayMovies();
                 break;
             case '5':
-                Menu.option5();
+                Menu.checkMovieOut();
                 break;
             case '6':
-                Menu.option6();
+                Menu.contactDetails();
                 break;
             case 'a':
                 Menu.adminOption();
@@ -47,7 +47,7 @@ class Menu {
         }
     }
 
-    private static void option1() {
+    private static void displayBooks() {
 
         ArrayList<Book> listBook = Book.getInstances();
         for (Book book : listBook) {
@@ -57,9 +57,11 @@ class Menu {
         }
     }
 
-    private static void option2() {
+    private static void checkBookOut() {
 
         String desiredBook = Helper.userSelection("Enter the title of the book you want to check-out. Please be aware of spelling.");
+        String userID = Helper.userSelection("ID: ");
+        String userPsswd = Helper.userSelection("Password: ");
         ArrayList<Book> listBook = Book.getInstances();
         Book checkedBook = null;
 
@@ -70,25 +72,10 @@ class Menu {
         }
         if (checkedBook != null) {
 
-            String userId = Helper.userSelection("Id Number:   ");
-            String password = Helper.userSelection("password:   ");
-            boolean userFound = false;
+            User user = User.authenticate(userID, userPsswd);
+            if (user != null){
 
-            for (User user : User.getUserList()) {
-                String dbuser = user.toString();
-                String dbId = dbuser.split(";")[0];
-                String dbpsswd = dbuser.split(";")[1];
-
-                if (dbId.equals(userId) && dbpsswd.equals(password)) {
-
-                    user.checkedOut(checkedBook);
-                    userFound = true;
-
-                }
-            }
-
-            if (userFound) {
-
+                user.checkedOut(checkedBook);
                 Book.instances.remove(checkedBook);
                 checkedBook.checkOut();
                 System.out.println("Thank you! Enjoy the book");
@@ -103,7 +90,7 @@ class Menu {
         }
     }
 
-    private static void option3() {
+    private static void returnBook() {
 
         String toBeReturned = Helper.userSelection("Which book would you like to return?");
         ArrayList<Book> listBook = Book.getInstances();
@@ -138,7 +125,7 @@ class Menu {
         }
     }
 
-    private static void option4() {
+    private static void displayMovies() {
 
         ArrayList<Movie> listMovies = Movie.getInstances();
         for (Movie movie : listMovies) {
@@ -148,7 +135,7 @@ class Menu {
         }
     }
 
-    private static void option5() {
+    private static void checkMovieOut() {
 
         String desiredMovie = Helper.userSelection("Enter the title of the movie you want to check-out. Please be aware of spelling.");
         ArrayList<Movie> listMovie = Movie.getInstances();
@@ -196,7 +183,7 @@ class Menu {
         }
     }
 
-    private static void option6() {
+    private static void contactDetails() {
 
         String userId = Helper.userSelection("Id Number:   ");
         String password = Helper.userSelection("password:   ");

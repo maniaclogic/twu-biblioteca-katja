@@ -45,4 +45,11 @@ public class TestUser {
         assertThat(user1.getUserContacts(), is("ID: 123-1234, Name: Tom, Tel: 0123-5225252, Email: abc@email.com"));
     }
 
+
+    @Test
+    public void testThatAuthenticateReturnsCorrectUser() {
+        assertThat(User.authenticate("123-1234", "hsf3"), is(user1));
+
+    }
+
 }

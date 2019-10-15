@@ -50,10 +50,7 @@ public class Book implements Media {
         this.checkedOut = true;
     }
 
-    void returnBook() {
-
-        this.checkedOut = false;
-    }
+    void returnBook() { this.checkedOut = false; }
 
     public String toString() {
 
