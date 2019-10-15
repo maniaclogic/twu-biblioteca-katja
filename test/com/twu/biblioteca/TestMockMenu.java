@@ -22,17 +22,20 @@ public class TestMockMenu {
     @Test
     public void testDisplay() {
         Menu menu = new Menu();
-        assertThat(menu.display().toString(), is("\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n " +
-                "3) Return a Book \n 4) List of Movies \n 5) Check-out Movie \n 6) See my contact details \n\n a) admin"));
+        assertThat(menu.display().toString(), is("\n\nOptions:\n1) Login \n 2) Logout \n 3) List of Books \n 4) Check-out Book \n " +
+                "5) Return a Book \n 6) List of Movies \n " +
+                "7) Check-out Movie \n 8) See my contact details \n\n a) admin"));
     }
 
     @Test
     public void testNavExit() throws Exception {
 
+        Menu menu = new Menu();
+
         BibliotecaApp app = new BibliotecaApp();
 
         assertThat(app.exit, is(false));
-        Menu.navigate("x");
+        menu.navigate("x");
         assertThat(app.exit, is(true));
     }
 
@@ -47,12 +50,12 @@ public class TestMockMenu {
 //    }
 
 //    @Test
-//    public void testOption2() {
+//    public void testCheckOutBook() {
 //        Helper mockHelper = mock(Helper.class);
-//        User user = User.createUser("123-4567", "fhsidhv");
-//        when(mockHelper.userSelection("Book")).thenReturn("Moby-Dick")
-//                .thenReturn("123-4567")
-//                .thenReturn("fhsidhv");
+//
+//
+//        User user1 = User.createUser("123-1234", "hsf3", "Tom", "0123-5225252", "abc@email.com");
+//        when(mockHelper.userSelection("Book")).thenReturn("Moby-Dick");
 //
 //        verify(user).toString();}
 }

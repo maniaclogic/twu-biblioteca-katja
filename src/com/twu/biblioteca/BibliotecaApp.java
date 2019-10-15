@@ -18,7 +18,7 @@ public class BibliotecaApp {
 
         while (!exit) {
             System.out.println(menu.display());
-            Menu.navigate(Helper.userSelection("Input the number of what you want to do.   (x to quit)"));
+            menu.navigate(Helper.userSelection("Input the number of what you want to do.   (x to quit)"));
         }
     }
 }

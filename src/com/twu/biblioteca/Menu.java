@@ -4,16 +4,19 @@ import java.util.ArrayList;
 
 class Menu {
 
+    private String userId;
+    private String userPsswd;
+
     String greet() {
         return "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
     }
 
     String display() {
-        return "\n\nOptions:\n 1) List of Books \n 2) Check-out Book \n 3) Return a Book \n 4) List of Movies \n " +
-                "5) Check-out Movie \n 6) See my contact details \n\n a) admin";
+        return "\n\nOptions:\n 1) Login \n 2) Logout \n 3) List of Books \n 4) Check-out Book \n 5) Return a Book \n 6) List of Movies \n " +
+                "7) Check-out Movie \n 8) See my contact details \n\n a) admin";
     }
 
-    static void navigate(String choice) throws Exception {
+    void navigate(String choice) throws Exception {
 
         char choi = choice.charAt(0);
 
@@ -22,25 +25,31 @@ class Menu {
                 BibliotecaApp.exit = true;
                 break;
             case '1':
-                Menu.displayBooks();
+                this.login();
                 break;
             case '2':
-                Menu.checkBookOut();
+                this.logout();
                 break;
             case '3':
-                Menu.returnBook();
+                this.displayBooks();
                 break;
             case '4':
-                Menu.displayMovies();
+                this.checkBookOut();
                 break;
             case '5':
-                Menu.checkMovieOut();
+                this.returnBook();
                 break;
             case '6':
-                Menu.contactDetails();
+                this.displayMovies();
+                break;
+            case '7':
+                this.checkMovieOut();
+                break;
+            case '8':
+                this.contactDetails();
                 break;
             case 'a':
-                Menu.adminOption();
+                this.adminOption();
                 break;
             default:
                 System.out.println("Not a valid input.");
@@ -48,7 +57,17 @@ class Menu {
         }
     }
 
-    private static void displayBooks() {
+    private void login() {
+        this.userId = Helper.userSelection("ID: ");
+        this.userPsswd = Helper.userSelection("Password: ");
+    }
+
+    private void logout() {
+        this.userId = "";
+        this.userPsswd = "";
+    }
+
+    private void displayBooks() {
 
         ArrayList<Book> listBook = Book.getInstances();
         for (Book book : listBook) {
@@ -58,11 +77,9 @@ class Menu {
         }
     }
 
-    private static void checkBookOut() {
+    private void checkBookOut() {
 
         String desiredBook = Helper.userSelection("Enter the title of the book you want to check-out. Please be aware of spelling.");
-        String userID = Helper.userSelection("ID: ");
-        String userPsswd = Helper.userSelection("Password: ");
 
         ArrayList<Book> listBook = Book.getInstances();
         Book checkedBook = null;
@@ -74,7 +91,7 @@ class Menu {
         }
         if (checkedBook != null) {
 
-            User user = User.authenticate(userID, userPsswd);
+            User user = User.authenticate(this.userId, this.userPsswd);
             if (user != null) {
 
                 user.checkedOut(checkedBook);
@@ -84,7 +101,7 @@ class Menu {
                 Book.instances.add(checkedBook);
 
             } else {
-                System.out.println("Incorrect credentials.");
+                System.out.println("Invalid credentials.");
             }
 
         } else {
@@ -92,7 +109,7 @@ class Menu {
         }
     }
 
-    private static void returnBook() {
+    private void returnBook() {
 
         String toBeReturned = Helper.userSelection("Which book would you like to return?");
         ArrayList<Book> listBook = Book.getInstances();
@@ -103,9 +120,7 @@ class Menu {
             }
         }
         if (returningBook != null) {
-            String userId = Helper.userSelection("ID:   ");
-            String userPassword = Helper.userSelection("Password:   ");
-            User userFound = User.authenticate(userId, userPassword);
+            User userFound = User.authenticate(this.userId, this.userPsswd);
 
             if (userFound != null) {
 
@@ -118,7 +133,7 @@ class Menu {
         } else { System.out.println("That is not a valid book to return."); }
     }
 
-    private static void displayMovies() {
+    private void displayMovies() {
 
         ArrayList<Movie> listMovies = Movie.getInstances();
         for (Movie movie : listMovies) {
@@ -128,7 +143,7 @@ class Menu {
         }
     }
 
-    private static void checkMovieOut() {
+    private void checkMovieOut() {
 
         String desiredMovie = Helper.userSelection("Enter the title of the movie you want to check-out. Please be aware of spelling.");
         ArrayList<Movie> listMovie = Movie.getInstances();
@@ -143,10 +158,7 @@ class Menu {
 
         if (checkedMovie != null) {
 
-            String userId = Helper.userSelection("Id Number:   ");
-            String password = Helper.userSelection("password:   ");
-
-            User user = User.authenticate(userId, password);
+            User user = User.authenticate(this.userId, this.userPsswd);
 
             if (user != null) {
 
@@ -157,7 +169,7 @@ class Menu {
                 Movie.instances.add(checkedMovie);
 
             } else {
-                System.out.println("Incorrect credentials.");
+                System.out.println("Invalid credentials.");
             }
 
         } else {
@@ -165,24 +177,16 @@ class Menu {
         }
     }
 
-    private static void contactDetails() {
+    private void contactDetails() {
 
-        String userId = Helper.userSelection("ID:   ");
-        String password = Helper.userSelection("Password:   ");
-        User user = User.authenticate(userId, password);
+        User user = User.authenticate(this.userId, this.userPsswd);
 
         if (user != null) { System.out.println(user.getUserContacts()); }
     }
 
-    private static void adminOption() {
+    private void adminOption() {
 
-        String adminID = Helper.userSelection("ID: ");
-        String adminPsswd = Helper.userSelection("Password: ");
-
-        assert adminPsswd != null;
-        assert adminID != null;
-
-        if (adminID.equals("Admin") && adminPsswd.equals("Secure")) {
+        if (this.userId.equals("Admin") && this.userPsswd.equals("Secure")) {
 
             System.out.println("Options:\n 1) Search for User \n 2) Search for Media");
             String adminChoice = Helper.userSelection(" ");
@@ -190,23 +194,21 @@ class Menu {
 
             if (adminChoice.equals("1") || adminChoice.equals("search for user") || adminChoice.equals("user")) {
 
-                Menu.adminUserSearch(Helper.userSelection("UserID: "));
+                this.adminUserSearch(Helper.userSelection("UserID: "));
 
             } else if (adminChoice.equals("2") || adminChoice.equals("search for media") || adminChoice.equals("media")) {
 
-                Menu.adminMediaSearch(Helper.userSelection("Media title:"));
+                this.adminMediaSearch(Helper.userSelection("Media title:"));
 
             } else {
                 System.out.println("Not a valid input.");
             }
 
-        } else {
-            System.out.println("Invalid credentials");
-        }
+        } else { System.out.println("User is not an Admin"); }
     }
 
 
-    private static void adminUserSearch(String userToSearch) {
+    private void adminUserSearch(String userToSearch) {
         boolean userFound = false;
         for (User user : User.getUserList()) {
             if (user.getIdNum().equals(userToSearch)) {
@@ -219,7 +221,7 @@ class Menu {
         }
     }
 
-    private static void adminMediaSearch(String mediaToSearch) {
+    private void adminMediaSearch(String mediaToSearch) {
         boolean mediaFound = false;
         for (User user : User.getUserList()) {
             ArrayList<String> usersMedia = user.getCheckedOutMedia();

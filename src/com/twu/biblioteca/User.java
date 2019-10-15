@@ -58,10 +58,7 @@ public class User {
         return "ID: " + this.getIdNum() + ", Name: " + this.getName() + ", Tel: " + this.getNumber() + ", Email: " + this.getEmail();
     }
 
-    /*
-    String userId = Helper.userSelection("Id Number:   ");
-    String password = Helper.userSelection("password:   ");
-    */
+
     static User authenticate(String userID, String password) {
         User userFound = null;
 
